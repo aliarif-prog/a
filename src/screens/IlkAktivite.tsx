@@ -7,7 +7,26 @@ interface Props {
   onGeri: () => void;
 }
 
-const ONERILEN = AKTIVITELER.slice(0, 3);
+/**
+ * Seed'teki dizi sırasını izleyerek ilk 3 farklı alandan birer aktivite
+ * seçer. AKTIVITELER.slice(0, 3) yerine bunu kullanıyoruz çünkü dizide
+ * aktiviteler alan alan gruplanmış — düz slice hep aynı tek alandan
+ * (İlişkiler ve aile) 3 aktivite verirdi. Kullanıcı cevaplarına
+ * dayanan bir seçim değil, sadece seed sırasında çeşitlilik.
+ */
+function ilkUcFarkliAlan() {
+  const secilen: typeof AKTIVITELER = [];
+  const gorulenAlanlar = new Set<string>();
+  for (const aktivite of AKTIVITELER) {
+    if (gorulenAlanlar.has(aktivite.alanId)) continue;
+    gorulenAlanlar.add(aktivite.alanId);
+    secilen.push(aktivite);
+    if (secilen.length === 3) break;
+  }
+  return secilen;
+}
+
+const ONERILEN = ilkUcFarkliAlan();
 
 const ZORLUK_ETIKETI: Record<string, string> = {
   kolay: 'Kolay',
