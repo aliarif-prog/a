@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  /* Tek ana renk: sakin, mat bir çam yeşili. Nötr griler Tailwind'in
+     varsayılan neutral paletinden geliyor. */
+  --color-brand-50: #f3f6f4;
+  --color-brand-100: #e3eae5;
+  --color-brand-200: #c6d5cb;
+  --color-brand-300: #a1b8a9;
+  --color-brand-400: #799a83;
+  --color-brand-500: #587065;
+  --color-brand-600: #435a50;
+  --color-brand-700: #364a41;
+  --color-brand-800: #2b3a33;
+  --color-brand-900: #212e28;
+
+  /*
+    Haz ve ustalık: ayırt edilebilir ama hiyerarşisiz iki renk.
+    İkisi de aynı doygunluk/parlaklık bandında — biri "daha iyi"
+    görünmesin diye kasıtlı olarak eşleştirildi. Sıcak kil (haz) /
+    soğuk arduvaz mavisi (ustalık). Altın, parlak veya ödül rengi yok.
+  */
+  --color-haz-100: #f2e3d8;
+  --color-haz-300: #ddb593;
+  --color-haz-500: #bd8654;
+  --color-haz-600: #9c6c41;
+
+  --color-ustalik-100: #dee5eb;
+  --color-ustalik-300: #a7bfd0;
+  --color-ustalik-500: #5c7f99;
+  --color-ustalik-600: #47657c;
+
+  --color-kriz-500: #a85a52;
+  --color-kriz-600: #874540;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-900);
+  -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
