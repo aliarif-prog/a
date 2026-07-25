@@ -62,19 +62,26 @@ export default function App() {
               veri={veri}
               guncelle={guncelle}
               onDevam={() => setEkran('deger-ozeti')}
+              onGeri={() => setEkran('giris')}
             />
           )}
 
           {ekran === 'deger-ozeti' && (
-            <DegerOzeti veri={veri} onDevam={() => setEkran('ilk-aktivite')} />
+            <DegerOzeti
+              veri={veri}
+              onDevam={() => setEkran('ilk-aktivite')}
+              onGeri={() => setEkran('deger-haritasi')}
+            />
           )}
 
           {ekran === 'ilk-aktivite' && (
             <IlkAktivite
+              ilkSecili={secilenIlkAktiviteId}
               onDevam={(aktiviteId) => {
                 setSecilenIlkAktiviteId(aktiviteId);
                 setEkran('haftalik-planlama');
               }}
+              onGeri={() => setEkran('deger-ozeti')}
             />
           )}
 
@@ -84,6 +91,7 @@ export default function App() {
               guncelle={guncelle}
               ilkAktiviteId={secilenIlkAktiviteId}
               onTamam={() => setEkran('bugun')}
+              onGeri={() => setEkran('ilk-aktivite')}
             />
           )}
 

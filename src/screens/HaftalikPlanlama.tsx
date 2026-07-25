@@ -15,11 +15,12 @@ interface Props {
   guncelle: (parca: Partial<UygulamaVerisi>) => void;
   ilkAktiviteId: string | null;
   onTamam: () => void;
+  onGeri: () => void;
 }
 
 const MAKS_AKTIVITE = 5;
 
-export default function HaftalikPlanlama({ veri, guncelle, ilkAktiviteId, onTamam }: Props) {
+export default function HaftalikPlanlama({ veri, guncelle, ilkAktiviteId, onTamam, onGeri }: Props) {
   const [girdiler, setGirdiler] = useState<Girdi[]>(() =>
     ilkAktiviteId
       ? [{ girdiId: id(), aktiviteId: ilkAktiviteId, gunIndex: null, saat: '', ifThen: '' }]
@@ -68,6 +69,12 @@ export default function HaftalikPlanlama({ veri, guncelle, ilkAktiviteId, onTama
   return (
     <div className="flex-1 flex flex-col min-h-0">
       <div className="px-6 pt-6 pb-3 shrink-0">
+        <button
+          onClick={onGeri}
+          className="text-[13px] text-neutral-500 mb-2 -ml-1 px-1 py-0.5"
+        >
+          ← Geri
+        </button>
         <h1 className="text-xl font-medium text-neutral-900">Haftaya yerleştir</h1>
         <p className="text-[13px] text-neutral-500 mt-1">
           Gün ve saat seçmen gerekiyor; olmadan plan kaydolmuyor. Haftada en

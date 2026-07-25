@@ -4,12 +4,19 @@ import type { UygulamaVerisi } from '../store';
 interface Props {
   veri: UygulamaVerisi;
   onDevam: () => void;
+  onGeri: () => void;
 }
 
-export default function DegerOzeti({ veri, onDevam }: Props) {
+export default function DegerOzeti({ veri, onDevam, onGeri }: Props) {
   return (
     <div className="flex-1 flex flex-col min-h-0">
       <div className="px-6 pt-6 pb-3 shrink-0">
+        <button
+          onClick={onGeri}
+          className="text-[13px] text-neutral-500 mb-2 -ml-1 px-1 py-0.5"
+        >
+          ← Geri
+        </button>
         <h1 className="text-xl font-medium text-neutral-900">Haritan hazır</h1>
         <p className="text-[13px] text-neutral-500 mt-1">
           Her alanda önem verdiğin ile ayırabildiğin vakit arasındaki fark.

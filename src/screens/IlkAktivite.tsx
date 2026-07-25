@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { AKTIVITELER } from '../seed';
 
 interface Props {
+  ilkSecili: string | null;
   onDevam: (aktiviteId: string) => void;
+  onGeri: () => void;
 }
 
 const ONERILEN = AKTIVITELER.slice(0, 3);
@@ -13,12 +15,18 @@ const ZORLUK_ETIKETI: Record<string, string> = {
   zor: 'Zor',
 };
 
-export default function IlkAktivite({ onDevam }: Props) {
-  const [secili, setSecili] = useState<string | null>(null);
+export default function IlkAktivite({ ilkSecili, onDevam, onGeri }: Props) {
+  const [secili, setSecili] = useState<string | null>(ilkSecili);
 
   return (
     <div className="flex-1 flex flex-col min-h-0">
       <div className="px-6 pt-6 pb-3 shrink-0">
+        <button
+          onClick={onGeri}
+          className="text-[13px] text-neutral-500 mb-2 -ml-1 px-1 py-0.5"
+        >
+          ← Geri
+        </button>
         <h1 className="text-xl font-medium text-neutral-900">İlk adımını seç</h1>
         <p className="text-[13px] text-neutral-500 mt-1">
           Bunlardan biriyle başlayalım. İstediğin zaman başka bir tane
