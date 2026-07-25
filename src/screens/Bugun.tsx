@@ -9,9 +9,10 @@ interface Props {
   guncelle: (
     parca: Partial<UygulamaVerisi> | ((onceki: UygulamaVerisi) => Partial<UygulamaVerisi>),
   ) => void;
+  onGeri: () => void;
 }
 
-export default function Bugun({ veri, guncelle }: Props) {
+export default function Bugun({ veri, guncelle, onGeri }: Props) {
   const bugun = bugununTarihi(veri.sahteBugunOfset);
   const [acikPlanlanmisId, setAcikPlanlanmisId] = useState<string | null>(null);
   const [kapatilanBildirimler, setKapatilanBildirimler] = useState<Set<string>>(new Set());
@@ -96,6 +97,12 @@ export default function Bugun({ veri, guncelle }: Props) {
   return (
     <div className="flex-1 flex flex-col min-h-0">
       <div className="px-6 pt-6 pb-3 shrink-0">
+        <button
+          onClick={onGeri}
+          className="text-[13px] text-neutral-500 mb-2 -ml-1 px-1 py-0.5"
+        >
+          ← Plana dön
+        </button>
         <p className="text-[13px] text-neutral-500 capitalize">{tarihiFormatla(bugun)}</p>
         <h1 className="text-xl font-medium text-neutral-900 mt-0.5">Bugün</h1>
       </div>

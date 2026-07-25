@@ -90,12 +90,20 @@ export default function App() {
               veri={veri}
               guncelle={guncelle}
               ilkAktiviteId={secilenIlkAktiviteId}
-              onTamam={() => setEkran('bugun')}
+              onTamam={() => {
+                // Bir kez kaydedildikten sonra sıfırla: "Plana dön" ile buraya
+                // tekrar gelindiğinde aynı aktivite mükerrer eklenmesin, ekran
+                // sadece yeni aktivite eklemek için boş açılsın.
+                setSecilenIlkAktiviteId(null);
+                setEkran('bugun');
+              }}
               onGeri={() => setEkran('ilk-aktivite')}
             />
           )}
 
-          {ekran === 'bugun' && <Bugun veri={veri} guncelle={guncelle} />}
+          {ekran === 'bugun' && (
+            <Bugun veri={veri} guncelle={guncelle} onGeri={() => setEkran('haftalik-planlama')} />
+          )}
         </main>
       </div>
 
